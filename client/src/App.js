@@ -62,7 +62,7 @@ function App() {
    
     const  object = {
       sender,
-      reciever ,subject ,message ,name ,number , email ,experience, image
+      reciever ,subject ,message ,name ,number , email ,experience, image : base64
     }
 
     // const response = await axios.post('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', 
