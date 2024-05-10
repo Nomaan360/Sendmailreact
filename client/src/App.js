@@ -76,9 +76,9 @@ function App() {
     // console.log(response);
       await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
         method: 'POST',
-        body: {
+        body: JSON.stringify({
           'rahul': 'rahul'
-        }
+        })
       })
       .then(response => {
         console.log(response);
