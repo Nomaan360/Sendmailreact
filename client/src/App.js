@@ -57,9 +57,9 @@ function App() {
     }      
    
 
-      fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
+      await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
         method: 'POST',
-        body: formData  // Do not set Content-Type header, fetch handles it
+        body: attachments[0]  // Do not set Content-Type header, fetch handles it
       })
       .then(response => {
           if (!response.ok) {
