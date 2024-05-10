@@ -11,6 +11,8 @@ function App() {
   const [message, setMessage] = useState('');
   const [number, setNumber] = useState('');
   const [experience, setExperience] = useState('');
+  const [base64, setBase64] = useState('');
+
   const [attachments, setAttachments] = useState([]);
   let subject = 'New Submission from your website';
   let reciever = 'nomaan@360core.inc';
@@ -33,8 +35,16 @@ function App() {
   };
   
   const handleAttachmentChange = (e) => {
+    console.log(e.target.files[0]);
     setAttachments(e.target.files); // Directly use the FileList
 
+    const reader = new FileReader()
+    
+    reader.onload = () => {
+      console.log('called: ', reader.result)
+      // setBase64IMG(reader.result)
+    }
+    reader.readAsDataURL(e.target.files[0])
   };
     const sendEmail = async (e) => {
       e.preventDefault();
@@ -56,10 +66,16 @@ function App() {
         console.log(pair[0] + ', ' + pair[1]);
     }      
    
+    const  object = {
+      sender,
+      reciever ,subject ,message ,name ,number , email ,experience
+    }
 
       await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
         method: 'POST',
-        body: attachments[0]  // Do not set Content-Type header, fetch handles it
+        body: {
+          'rahul': 'rahul'
+        }  // Do not set Content-Type header, fetch handles it
       })
       .then(response => {
           if (!response.ok) {
