@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import  axios from 'axios'
 
 import React, { useState } from 'react';
 
@@ -71,20 +71,23 @@ function App() {
       reciever ,subject ,message ,name ,number , email ,experience
     }
 
-      await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
-        method: 'POST',
-        body: {
-          'rahul': 'rahul'
-        }  // Do not set Content-Type header, fetch handles it
-      })
-      .then(response => {
-          if (!response.ok) {
-              throw new Error('Network response was not ok ' + response.statusText);
-          }
-          return response.json();  // Make sure the server response is indeed JSON
-      })
-      .then(data => console.log('Success:', data))
-      .catch(error => console.error('Error:', error));
+    const response = await axios.post('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', 
+    {"rahul":"rahul"}).then((response)=>{console.log("response",response)}).catch((error)=>console.log("Error",error))
+    console.log(response);
+      // await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
+      //   method: 'POST',
+      //   body: {
+      //     'rahul': 'rahul'
+      //   }  // Do not set Content-Type header, fetch handles it
+      // })
+      // .then(response => {
+      //     if (!response.ok) {
+      //         throw new Error('Network response was not ok ' + response.statusText);
+      //     }
+      //     return response.json();  // Make sure the server response is indeed JSON
+      // })
+      // .then(data => console.log('Success:', data))
+      // .catch(error => console.error('Error:', error));
     }
 
   
