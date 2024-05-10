@@ -57,7 +57,7 @@ function App() {
     }      
    
 
-      fetch('https://nodejs-serverless-function-express-91mq7i52r.vercel.app/api/api', {
+      fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
         method: 'POST',
         body: formData  // Do not set Content-Type header, fetch handles it
       })
