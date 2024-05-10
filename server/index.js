@@ -7,13 +7,7 @@ const cors = require('cors');
 // Multer setup
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
-app.use(cors({
-    origin: 'http://localhost:3000' // Allow only your frontend origin, adjust if your port changes
-}));
-const corsOptions = {
-    origin: 'http://localhost:3000',
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
-};
+app.use(cors());
 // Nodemailer transporter
 const transporter = nodemailer.createTransport({
     host: 'smtp.titan.email',
