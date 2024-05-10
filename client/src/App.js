@@ -42,7 +42,7 @@ function App() {
     
     reader.onload = () => {
       console.log('called: ', reader.result)
-      // setBase64IMG(reader.result)
+      setBase64(reader.result)
     }
     reader.readAsDataURL(e.target.files[0])
   };
@@ -59,16 +59,10 @@ function App() {
       formData.append('unumber', number);
       formData.append('uemail', email);
       formData.append('uexperience', experience);
-      for (let i = 0; i < attachments.length; i++) {
-          formData.append('attachments', attachments[i], attachments[i].name);
-      }
-      for (var pair of formData.entries()) {
-        console.log(pair[0] + ', ' + pair[1]);
-    }      
    
     const  object = {
       sender,
-      reciever ,subject ,message ,name ,number , email ,experience
+      reciever ,subject ,message ,name ,number , email ,experience, image
     }
 
     // const response = await axios.post('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', 
@@ -76,9 +70,7 @@ function App() {
     // console.log(response);
       await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
         method: 'POST',
-        body: JSON.stringify({
-          'rahul': 'rahul'
-        })
+        body: JSON.stringify(object)
       })
       .then(response => {
         console.log(response);
