@@ -16,7 +16,7 @@ function App() {
   const [attachments, setAttachments] = useState([]);
   let subject = 'New Submission from your website';
   let reciever = 'nomaan@360core.inc';
-  let sender = 'info@vitnixx.com';
+  let sender = 'nomaan@360core.inc';
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -49,9 +49,9 @@ function App() {
     const sendEmail = async (e) => {
       e.preventDefault();
 
-
+      console.log('sender',sender);
       const formData = new FormData();
-      formData.append('sender', sender);
+      formData.append('sendesr', sender);
       formData.append('to', reciever);
       formData.append('subject', subject);
       formData.append('text', message);
@@ -61,14 +61,13 @@ function App() {
       formData.append('uexperience', experience);
    
     const  object = {
-      sender,
-      reciever ,subject ,message ,name ,number , email ,experience, image : base64
+      reciever ,sender,subject ,message ,name ,number , email ,experience, image : base64
     }
 
     // const response = await axios.post('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', 
     // {"rahul":"rahul"}).then((response)=>{console.log("response",response)}).catch((error)=>console.log("Error",error))
     // console.log(response);
-      await fetch('https://nodejs-serverless-function-express-wine-nu.vercel.app/api/api', {
+      await fetch('http://localhost:3001/send', {
         method: 'POST',
         body: JSON.stringify(object)
       })

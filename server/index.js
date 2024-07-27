@@ -14,8 +14,8 @@ const transporter = nodemailer.createTransport({
     port: 587,
     secure: false,
     auth: {
-        user: 'info@vitnixx.com',
-        pass: 'Vtc@@7899'
+        user: 'nomaan@360core.inc',
+        pass: 'Nomaan360!'
     }
 });
 
